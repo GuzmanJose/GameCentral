@@ -37,6 +37,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('comments', 'CommentsController@publish');
     Route::get('allUsers', 'AllusersController@index');
     Route::get('allUsers/{user}', 'AllusersController@show');
+    Route::get ('OutputJson', 'outputJsonController@outPut');
 
   
 });

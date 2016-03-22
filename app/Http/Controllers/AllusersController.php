@@ -20,6 +20,6 @@ class AllusersController extends Controller
 
     public function show (User $user)
     {
-          return view('allUsers.something', compact('user'));    			
+          return view('allUsers.userComments', compact('user'));    			
     }
 }
