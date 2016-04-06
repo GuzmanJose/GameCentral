@@ -17,6 +17,8 @@ class CommentTable extends Migration
             $table->string('title');
             $table->text('body');
             $table->integer('user_id');
+            $table->integer('location')->nullable();
+            $table->integer('game_id')->nullable();
             $table->timestamps();
         });
     }

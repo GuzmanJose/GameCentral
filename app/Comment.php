@@ -13,7 +13,7 @@ class Comment extends Model
     
     ];
 
-    public function users()
+    public function user()
     {
     	return $this->hasOne('App\User');
     }

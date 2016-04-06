@@ -12,7 +12,8 @@
 */
 
 Route::get('/', 'MyWelcome@welcome');
-
+Route::get('OutputJson', 'outputJsonController@outPut');
+Route::get('portfolio', 'portfolioController@getPortfolio');  // Experimental!!!!!!
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -28,16 +29,20 @@ Route::get('/', 'MyWelcome@welcome');
 Route::group(['middleware' => 'web'], function () {
     
     Route::auth();
-    Route::get('avatar', 'AvatarController@myAvatar');
+
     Route::get('/home', 'HomeController@index');
+    
+    Route::get('avatar', 'AvatarController@myAvatar');
     Route::get('/home', 'AvatarController@showAvatar');
     Route::post('/home', 'AvatarController@createAvatar');
+
     Route::get('/comments', 'CommentsController@index');
     Route::get('/comments', 'CommentsController@showComments');
     Route::post('comments', 'CommentsController@publish');
+
     Route::get('allUsers', 'AllusersController@index');
     Route::get('allUsers/{user}', 'AllusersController@show');
-    Route::get ('OutputJson', 'outputJsonController@outPut');
-
+    Route::post('allUsers/{user}', 'AllusersController@postUserComments');
+    
   
 });

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Comment;
 use Auth;
+use App\User;
 
 class CommentsController extends Controller
 {
@@ -28,9 +29,10 @@ class CommentsController extends Controller
 
     public function showComments()
     {
-        $comments = Comment::latest()->get();
+        $users = User::with('comments')->latest()->get();
         
-        return view('commentsFolder.comments', compact('comments'));
+        
+        return view('commentsFolder.comments', compact('users'));
     }
         
     

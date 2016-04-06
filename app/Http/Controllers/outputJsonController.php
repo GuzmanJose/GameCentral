@@ -10,7 +10,7 @@ use App\User;
 class outputJsonController extends Controller
 {
     public function outPut()				
-    {    
+    {       
     	$users = User::all();
 
     	return response()->json($users);

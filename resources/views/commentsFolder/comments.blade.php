@@ -5,12 +5,15 @@
 
 <h1>Comments</h1>
 <hr>
-@foreach ($comments as $comment)
-  
+@foreach ($users as $user)
+@foreach ($user->comments as $comment)
+<div>
    <h3>{{ $comment->title }}</h3>
-   <h5>{{ $comment->body }}</h5>
-   <h4><a href="#">{{ $comment->user_id }}</a></h4>
+   <h4>{{ $comment->body }}</h4>
+   <h6 class="bottom-right"><a href="/allUsers/{{ $user->id}}">{{ $user->name }}</a></h6>
    <hr>
+</div> 
+@endforeach
 @endforeach
 
 
