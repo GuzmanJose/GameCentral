@@ -14,11 +14,13 @@ class CommentTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->text('body');
             $table->integer('user_id');
             $table->integer('location')->nullable();
             $table->integer('game_id')->nullable();
+            $table->string('user_name');
+            $table->string('photo');
             $table->timestamps();
         });
     }

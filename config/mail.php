@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'disegnopp@gmail.com', 'name' => 'GameCentral Support'],
+    'from' => ['address' => 'disegnopp@gmail.com', 'name' => 'GameCentral_Support'],
 
     /*
     |--------------------------------------------------------------------------

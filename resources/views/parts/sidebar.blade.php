@@ -1,31 +1,58 @@
-<div class="container-fluid">
 
-  <div class="row content">
-     
-    <div class="col-sm-2 sidenav">
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="{{ url('allUsers') }}">All Users</a></li>
-        <li><a href="{{ url('/comments') }}">Comments</a></li>
-        <li><a href="#section4">Games</a></li>
-      </ul>
-    </div>
 
-    <div class="col-sm-9">
+
+
       
-      
-      <div class="row">
-        
-        <div class="col-sm-10">
-        
-        @yield('content')
 
-        </div>
+<div class="col-md-2 sidenav">
+		
+<div class="row">
+<div class="col-md-12 center-block">
 
-            
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+@if (count($avatars) > 0)
+@foreach ($avatars as $avatar)
+<img src="{{ $avatar -> profilePicture }}" alt="..." class="profileImage center spaceOnTop" width="100" height="100">
+
 </div>
+</div>	
+
+<div class="row">
+<div class="col-md-12 center-block">
+<hr>
+{{ $avatar -> nickname}}<br>
+<hr>
+{{ $avatar -> description}}<br>
+<hr>
+{{ $avatar -> optradio}}<br>
+<hr>
+@endforeach
+
+@else 	
+<ul class="nav nav-pills nav-stacked">
+<li class="center"><a href="{{ url('avatar')}}">Create Avatar</a></li>
+</ul>	
+@endif
+
+
+</div>
+</div>	
+	
+
+
+
+
+
+
+			
+
+
+
+<ul class="nav nav-pills nav-stacked">
+<li class="center"><a href="{{ url('allUsers') }}">All Users</a></li>
+</ul>
+</div>
+
+
+ 
+
+

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Avatar;
 use Auth;
+
 class AvatarController extends Controller
 {
 
@@ -18,7 +19,16 @@ class AvatarController extends Controller
 
     public function createAvatar(Request $request)
     {   
+           $file = $request->file('profilePicture');
+
+           $name = time() . $file->getClientOriginalName();
+
+           $file->move('profilePics', $name);
+
+          
         $avatars = new Avatar($request->all());
+        $avatars->profilePicture = "profilePics/{$name}";
+       
         Auth::user()->avatars()->save($avatars);
     	
         
@@ -33,7 +43,6 @@ class AvatarController extends Controller
        return view('home', compact('avatars'));
     
     }
-
 
     public function myAvatar () {
 

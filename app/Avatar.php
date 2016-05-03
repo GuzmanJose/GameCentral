@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Avatar extends Model
 {
 	 protected $fillable = [
-        'nickname', 'description', 'optradio',
+        'nickname', 'description', 'optradio', 'profilePicture',
     ];
 
 

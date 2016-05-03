@@ -30,7 +30,7 @@ class CommentsController extends Controller
     public function showComments()
     {
         $users = User::with('comments')->latest()->get();
-        
+        return $users;
         
         return view('commentsFolder.comments', compact('users'));
     }

@@ -8,8 +8,8 @@
            
                
         <div class="spaceOnTop">
-        <form class="form-horizontal" role="form" method="POST" action="{{ url('/home') }}">
-           {{ csrf_field() }}   
+        <form class="form-horizontal" role="form" method="POST" action="{{ url('/home') }}" enctype="multipart/form-data" >
+           
 
             
             <div class="form-group">
@@ -42,7 +42,10 @@
             <!-- if statement -->
             </div>
 
-
+            <div class="form-group">
+            <label class="col-md-4 control-label">Profile Picture:</label>
+                <input type="file"  name="profilePicture">
+            </div>
 
             <div class="form-group">
                 <div class="col-md-6 col-md-offset-4">
@@ -51,6 +54,7 @@
                     </button>
                 </div>
             </div>
+            <input type="hidden" value="{{ csrf_token() }}" name="_token">
         </form>
         </div>
 

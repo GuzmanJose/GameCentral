@@ -41,8 +41,29 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('comments', 'CommentsController@publish');
 
     Route::get('allUsers', 'AllusersController@index');
-    Route::get('allUsers/{user}', 'AllusersController@show');
-    Route::post('allUsers/{user}', 'AllusersController@postUserComments');
+    Route::get('allUsers/{id}', 'AllusersController@show');
+    Route::post('allUsers/{id}', 'AllusersController@postUserComments');
+
+
+    Route::get('allIssues', 'AllIssuesController@index');
+    Route::get('allIssues', 'AllIssuesController@showAvatar');
+    Route::get('uploadIssue', 'AllIssuesController@indexUploadIssue');
+
+    Route::get('allGames', 'AllGamesController@showAvatar');
+    Route::get('uploadGame', 'AllGamesController@indexUploadGame');
+
+    Route::get('myGames', 'myGamesController@index');
+    Route::get('myIssues', 'myIssuesController@index');
+
+
+    Route::post('/game', 'gameController@storeGame');
+    Route::get('game/{id}', 'gameController@showGame');
+
+
+    
+    Route::post('/issue', 'issueController@storeIssue');
+    Route::get('issue/{id}', 'issueController@showIssue');
+    Route::post('issue/{id}', 'issueController@postUserCommentsIssues');
     
   
 });

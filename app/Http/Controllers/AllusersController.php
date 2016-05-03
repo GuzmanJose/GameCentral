@@ -10,9 +10,14 @@ use App\User;
 use Auth;
 
 
+
 class AllusersController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index ()
     {
@@ -20,26 +25,37 @@ class AllusersController extends Controller
     	return view('allUsers.allUsers', compact('users'));
     }
 
-    public function show ($user)
-    {       
-         $mainUser = User::find($user);
-        // $users = User::with(array('comments'=>function($query){
-        //         $query->where('location', '=', $user);
-        // }))
-        // ->get();
-        //  return $users;
-        
-         $comments = Comment::where('location', '=', $user)->latest()->get();  
-  
-          
-          return view('allUsers.userComments', compact('comments'), compact('mainUser'));    			
-    }
 
+    public function show ($id)
+    {       
+         $mainUser = User::find($id);
+         // $users = User::with(array('comments'=>function($query) {
+         //        $query->where('location', '=', '$mainUser->id');
+         // }))
+         // ->get();
+        
+        // $users = Comment::with('user')->get();
+        // return $users;
+       
+         $comments = Comment::where('location', '=', $id)->latest()->get();
+
+
+         $avatar = $mainUser->avatars()->get();
+
+         return view('allUsers.userComments', compact('comments', 'mainUser', 'avatar'));    			
+    }
    
-    public function postUserComments(Request $request, $user)
-    {
+    public function postUserComments(Request $request, $id)
+    {   
+        $user = Auth::user();
+        $avatar = $user->avatars()->first();
+        $photo = $avatar->profilePicture;
+        $name = $user->name;
+
         $comments = new Comment($request->all());
-        $comments->location = $user;
+        $comments->photo = $photo;
+        $comments->user_name = $name;
+        $comments->location = $id;
         Auth::user()->comments()->save($comments);
 
         return back();

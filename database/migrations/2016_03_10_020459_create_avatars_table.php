@@ -17,6 +17,7 @@ class CreateAvatarsTable extends Migration
             $table->string('nickname')->unique();
             $table->text('description');
             $table->string('optradio');
+            $table->string('profilePicture');
             $table->integer('user_id');
             $table->timestamps();
         });
