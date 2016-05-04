@@ -33,7 +33,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/home', 'HomeController@index');
     
     Route::get('avatar', 'AvatarController@myAvatar');
-    Route::get('/home', 'AvatarController@showAvatar');
     Route::post('/home', 'AvatarController@createAvatar');
 
     Route::get('/comments', 'CommentsController@index');
@@ -58,7 +57,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::post('/game', 'gameController@storeGame');
     Route::get('game/{id}', 'gameController@showGame');
-
+    Route::post('game/{id}', 'gameController@postUserCommentsGames');
 
     
     Route::post('/issue', 'issueController@storeIssue');

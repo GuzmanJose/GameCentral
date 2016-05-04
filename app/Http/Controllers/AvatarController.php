@@ -36,14 +36,6 @@ class AvatarController extends Controller
     }
     
 
-    public function showAvatar()
-    {   
-
-       $avatars = Auth::user()->avatars()->get();
-       return view('home', compact('avatars'));
-    
-    }
-
     public function myAvatar () {
 
     	return view('avatar.avatar');

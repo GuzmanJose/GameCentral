@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use GrahamCampbell\Markdown\Facades\Markdown;
 use App\Http\Requests;
 use App\Game;
+use App\Comment;
 use Auth;
 
 class gameController extends Controller
@@ -39,18 +41,40 @@ class gameController extends Controller
     	$games->zipGame = "img/games/{$gameName}";
     	$games->thumbnail = "img/gameImages/{$thumbnailName}";
         $games->user_name = $name;
+        $games->gameWebsite = $request->gameWebsite;
         $games->photo = $profilePic;
     	Auth::user()->games()->save($games);
 
-    	return view('gamesAndIssues.game', compact('games'));
+        $comments = Comment::where('gameLocation', '=', 0)->get();
+
+    	return view('gamesAndIssues.game', compact('games', 'comments'));
 
     }
 
     	public function showGame($id)
     	{
     		$games = Auth::user()->games()->find($id);
-    		return view('gamesAndIssues.game', compact('games'));
+            $comments = Comment::where('gameLocation', '=', $id)->get();
+
+    		return view('gamesAndIssues.game', compact('games', 'comments'));
 
     	}
+
+        public function postUserCommentsGames(Request $request, $id)
+        {   
+            $user = Auth::user();
+            $avatar = $user->avatars()->first();
+            $photo = $avatar->profilePicture;
+            $name = $user->name;
+
+            $comments = new Comment($request->all());
+            $comments->photo = $photo;
+            $comments->user_name = $name;
+            $comments->gameLocation = $id;
+            Auth::user()->comments()->save($comments);
+
+            return back();
+
+        }
 
 }

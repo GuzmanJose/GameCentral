@@ -1,7 +1,10 @@
-.bottom-right {
-   
-    margin-right: 6em;
+.coverName {
+  color: #C792EA;
+  font-family: 'Poiret One', cursive;
+  font-size: 1.5em;
 }
+
+
 
 .title {
     font-weight: 100;
@@ -58,7 +61,7 @@
 
 .home {
   float: left;
-  height: 1500px;
+  height: 100%;
   margin-left: 10px;
   box-shadow: 1px 1px 15px #C6C6C6;
 }
@@ -100,6 +103,12 @@ footer {
   object-fit: cover;
   margin-left: 44%;
   border-radius:50%
+}
+
+.profileImageCover {
+  object-fit: cover;
+  border-radius:50%;
+  margin-bottom: 2em;
 }
 
 .profileImageComment {

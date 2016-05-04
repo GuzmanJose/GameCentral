@@ -30,16 +30,19 @@ class issueController extends Controller
 
         $issues = new Issue($request->all());
         $issues->user_name = $name;
+        $issues->website = $request->website;
         $issues->photo = $profilePic;
     	Auth::user()->issues()->save($issues);
 
-    	return view('gamesAndIssues.issue', compact('issues'));
+         $comments = Comment::where('issueLocation', '=', 0)->get();
+
+    	return view('gamesAndIssues.issue', compact('issues', 'comments'));
     }
 
     public function showIssue($id)
     {       
             $issues = Issue::all()->find($id);
-            $comments = Comment::where('location', '=', $id)->get();        
+            $comments = Comment::where('issueLocation', '=', $id)->get();        
 
             return view('gamesAndIssues.issue', compact('issues', 'comments'));
     }
@@ -54,7 +57,7 @@ class issueController extends Controller
         $comments = new Comment($request->all());
         $comments->photo = $photo;
         $comments->user_name = $name;
-        $comments->location = $id;
+        $comments->issueLocation = $id;
         Auth::user()->comments()->save($comments);
 
         return back();

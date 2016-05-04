@@ -20,10 +20,11 @@ class AllIssuesController extends Controller
 
     public function showAvatar()
     {   
+       $user = Auth::user();
        $issues = Issue::all(); 
-
        $avatars = Auth::user()->avatars()->get();
-       return view('gamesAndIssues.allIssues', compact('avatars', 'issues'));
+       
+       return view('gamesAndIssues.allIssues', compact('avatars', 'issues', 'user'));
     
     }
 

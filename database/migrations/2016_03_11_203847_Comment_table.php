@@ -18,6 +18,9 @@ class CommentTable extends Migration
             $table->text('body');
             $table->integer('user_id');
             $table->integer('location')->nullable();
+            $table->integer('gameLocation')->nullable();
+            $table->integer('issueLocation')->nullable();
+            $table->integer('homeLocation')->nullable();
             $table->integer('game_id')->nullable();
             $table->string('user_name');
             $table->string('photo');

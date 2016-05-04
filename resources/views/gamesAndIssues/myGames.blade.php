@@ -7,14 +7,12 @@
 
 
 <div class="col-md-7 home">
-
+<p class="myH2">My Games</p>
 
 <div class="row spaceOnTop">
 <div class="col-md-3">
-<p class="myH2">{{ $user -> name}}</p>
+<p class="miniTitle">{{ $user -> name}}</p>
 </div>
-<p>some other information</p>
-
 </div>
 
 

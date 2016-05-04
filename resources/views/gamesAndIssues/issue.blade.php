@@ -21,8 +21,8 @@
 {!! Markdown::convertToHtml($issues -> description) !!}
 <br>
 <br>
-<p class="text">Here is the GitHub URl {{ $issues -> gitHubLink }},<br>
-also you can visit {{ $issues -> user_name }} website: {{$issues->website}}</p>
+<p class="text">Here is the GitHub URl: {{ $issues -> gitHubLink }},<br>
+also you can visit {{ $issues -> user_name }} website: {{ $issues -> website }}</p>
 <br>
 
 </div>
@@ -45,7 +45,7 @@ also you can visit {{ $issues -> user_name }} website: {{$issues->website}}</p>
 {!! Markdown::convertToHtml($comment -> body) !!}
 <br>
 <br>
-something
+
 <br>
 <hr>
 </div>
