@@ -21,7 +21,7 @@
 @foreach ($game->games as $gameP)
 <div class="col-md-3">
 <p class="coverName text-center">{{ $gameP -> gameTitle }}</p> 
-<img src="{{ URL::to('/')}}/{{ $gameP -> photo}}" class="profileImageCover" width="200" height="200">
+<img src="{{ URL::to('/')}}/{{ $gameP -> thumbnail}}" class="profileImageCover" width="200" height="200">
 </div>
 @endforeach
 @endforeach  
