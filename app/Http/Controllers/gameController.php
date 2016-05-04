@@ -53,7 +53,7 @@ class gameController extends Controller
 
     	public function showGame($id)
     	{
-    		$games = Auth::user()->games()->find($id);
+    		$games = Game::all()->find($id);
             $comments = Comment::where('gameLocation', '=', $id)->get();
 
     		return view('gamesAndIssues.game', compact('games', 'comments'));
